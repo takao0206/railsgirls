@@ -1,10 +1,7 @@
 require "application_system_test_case"
 
-# 例: テストでファイルのアップロードをモックする
 def attach_mock_file
-  file = Tempfile.new([ "test_image", ".jpg" ]) # 一時ファイルを作成
-  file.write("dummy image data") # ダミーデータを書き込む
-  file.rewind
+  file = File.open(Rails.root.join("test", "fixtures", "files", "test_image.jpg"))
   file
 end
 
