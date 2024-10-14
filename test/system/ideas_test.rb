@@ -12,9 +12,9 @@ class IdeasTest < ApplicationSystemTestCase
 
   test "should create idea" do
     visit ideas_url
-    click_on "New idea"
+    click_on "Add a new idea"
 
-    fill_in "Desciption", with: @idea.desciption
+    fill_in "Description", with: @idea.description
     fill_in "Name", with: @idea.name
     fill_in "Picture", with: @idea.picture
     click_on "Create Idea"
@@ -27,7 +27,7 @@ class IdeasTest < ApplicationSystemTestCase
     visit idea_url(@idea)
     click_on "Edit this idea", match: :first
 
-    fill_in "Desciption", with: @idea.desciption
+    fill_in "Description", with: @idea.description
     fill_in "Name", with: @idea.name
     fill_in "Picture", with: @idea.picture
     click_on "Update Idea"
@@ -38,7 +38,9 @@ class IdeasTest < ApplicationSystemTestCase
 
   test "should destroy Idea" do
     visit idea_url(@idea)
-    click_on "Destroy this idea", match: :first
+    page.accept_confirm do
+      click_on "Destroy this idea", match: :first
+    end
 
     assert_text "Idea was successfully destroyed"
   end
