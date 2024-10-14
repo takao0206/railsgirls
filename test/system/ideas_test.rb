@@ -1,5 +1,13 @@
 require "application_system_test_case"
 
+# 例: テストでファイルのアップロードをモックする
+def attach_mock_file
+  file = Tempfile.new([ "test_image", ".jpg" ]) # 一時ファイルを作成
+  file.write("dummy image data") # ダミーデータを書き込む
+  file.rewind
+  file
+end
+
 class IdeasTest < ApplicationSystemTestCase
   setup do
     @idea = ideas(:one)
@@ -16,7 +24,8 @@ class IdeasTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @idea.description
     fill_in "Name", with: @idea.name
-    fill_in "Picture", with: @idea.picture
+    # fill_in "Picture", with: @idea.picture
+    attach_file "Picture", attach_mock_file.path # モックファイルをアップロード
     click_on "Create Idea"
 
     assert_text "Idea was successfully created"
@@ -29,7 +38,8 @@ class IdeasTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @idea.description
     fill_in "Name", with: @idea.name
-    fill_in "Picture", with: @idea.picture
+    # fill_in "Picture", with: @idea.picture
+    attach_file "Picture", attach_mock_file.path # モックファイルをアップロード
     click_on "Update Idea"
 
     assert_text "Idea was successfully updated"
