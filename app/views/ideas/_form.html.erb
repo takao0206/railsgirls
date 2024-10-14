@@ -22,6 +22,6 @@
     <%= form.file_field :picture, class: "form-control" %>
   </div>
   <div class="text-center">
-    <%= form.submit "Submit", class: "btn btn-primary" %>
+    <%= form.submit(@idea.persisted? ? "Update Idea" : "Create Idea", class: "btn btn-primary") %>
   </div>
 <% end %>
