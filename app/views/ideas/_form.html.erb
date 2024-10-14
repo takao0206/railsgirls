@@ -1,7 +1,7 @@
-<%= form_with(model: idea) do |form| %>
+<%= form_with(model: idea, local: true, class: "p-4 border rounded shadow-sm bg-light") do |form| %>
   <% if idea.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(idea.errors.count, "error") %> prevented this idea from being saved:</h4>
       <ul>
         <% idea.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -9,19 +9,19 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter the idea name" %>
   </div>
-  <div>
-    <%= form.label :desciption, style: "display: block" %>
-    <%= form.text_area :desciption %>
+  <div class="form-group mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Enter the idea description", rows: 4 %>
   </div>
-  <div>
-    <%= form.label :picture, style: "display: block" %>
-    <%= form.file_field :picture %>
+  <div class="form-group mb-3">
+    <%= form.label :picture, class: "form-label" %>
+    <%= form.file_field :picture, class: "form-control" %>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
