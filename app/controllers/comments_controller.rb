@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @idea.commnets.find(params[:id])
+    @comment = @idea.comments.find(params[:id])
   end
 
   def comment_params
