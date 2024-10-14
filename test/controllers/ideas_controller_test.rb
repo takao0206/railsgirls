@@ -17,7 +17,7 @@ class IdeasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create idea" do
     assert_difference("Idea.count") do
-      post ideas_url, params: { idea: { desciption: @idea.desciption, name: @idea.name, picture: @idea.picture } }
+      post ideas_url, params: { idea: { description: @idea.description, name: @idea.name, picture: @idea.picture } }
     end
 
     assert_redirected_to idea_url(Idea.last)
@@ -34,7 +34,7 @@ class IdeasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update idea" do
-    patch idea_url(@idea), params: { idea: { desciption: @idea.desciption, name: @idea.name, picture: @idea.picture } }
+    patch idea_url(@idea), params: { idea: { description: @idea.description, name: @idea.name, picture: @idea.picture } }
     assert_redirected_to idea_url(@idea)
   end
 
